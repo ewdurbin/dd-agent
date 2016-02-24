@@ -1,11 +1,16 @@
 # stdlib
 import time
+import sys
 
 # 3p
 import dns.resolver
 
 # project
 from checks import AgentCheck
+
+if sys.platform == 'win32':
+    from dns.rdtypes.ANY import *  # noqa
+    from dns.rdtypes.IN import *  # noqa
 
 
 class DNSCheck(AgentCheck):
